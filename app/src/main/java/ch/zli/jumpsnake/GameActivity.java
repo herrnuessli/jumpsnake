@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +16,13 @@ public class GameActivity extends AppCompatActivity {
     private SnakeView snakeView;
     private Button buttonUp, buttonDown, buttonLeft, buttonRight;
 
+=======
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class GameActivity extends AppCompatActivity {
+
+>>>>>>> 7c1d5a1 (add activities)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +31,7 @@ public class GameActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
 
         setContentView(R.layout.activity_game);
+<<<<<<< HEAD
 
         // Set content view to SnakeView
         snakeView = new SnakeView(this, null);
@@ -76,4 +85,6 @@ public class GameActivity extends AppCompatActivity {
         super.onPause();
         snakeView.stopGame();
     }
+=======
+>>>>>>> 7c1d5a1 (add activities)
 }
