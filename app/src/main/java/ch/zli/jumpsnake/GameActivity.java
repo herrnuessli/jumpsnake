@@ -3,6 +3,7 @@ package ch.zli.jumpsnake;
 import androidx.appcompat.app.AppCompatActivity;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 <<<<<<< HEAD
@@ -19,6 +20,9 @@ public class GameActivity extends AppCompatActivity {
 
 =======
 =======
+=======
+import android.content.Intent;
+>>>>>>> 1c44806 (add difficulty settings)
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -29,12 +33,15 @@ import android.widget.TextView;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameActivity extends AppCompatActivity {
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 >>>>>>> 7c1d5a1 (add activities)
 =======
+=======
+>>>>>>> 1c44806 (add difficulty settings)
     private static final int FPS = 60;
-    private static final int SPEED = 25;
+    private int speed = 25;
 
     private static final int STATUS_PAUSED = 1;
     private static final int STATUS_START = 2;
@@ -109,13 +116,33 @@ public class GameActivity extends AppCompatActivity {
         snakeView.startGame();
 =======
 
+        Intent intent = getIntent();
+        int difficulty = intent.getIntExtra("difficulty", 0);
+
+        switch(difficulty){
+            case 0:
+                this.speed = 40;
+                break;
+            case 1:
+                this.speed = 25;
+                break;
+            case 2:
+                this.speed = 10;
+                break;
+            default:
+                this.speed = 25;
+        }
+
+
         mGameView = findViewById(R.id.game_view);
         mGameStatusText = findViewById(R.id.game_status);
         mGameBtn = findViewById(R.id.game_control_btn);
         mGameScoreText = findViewById(R.id.game_score);
         mGameView.init();
+        TextView jokeView = findViewById(R.id.jokeView);
         mGameView.setGameScoreUpdatedListener(score -> {
-            mHandler.post(() -> mGameScoreText.setText("Score: " + score));
+            mHandler.post(() -> mGameScoreText.setText("Score: " + score + "hey"));
+            jokeView.setText("hey");
         });
 
         findViewById(R.id.up_btn).setOnClickListener(v -> {
@@ -140,6 +167,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
         mGameBtn.setOnClickListener(v -> {
+            String score = mGameScoreText.getText().toString().substring(7);
             if (mGameStatus.get() == STATUS_PLAYING) {
                 setGameStatus(STATUS_PAUSED);
             } else {
@@ -199,7 +227,7 @@ public class GameActivity extends AppCompatActivity {
             while (!mGameView.isGameOver() && mGameStatus.get() != STATUS_PAUSED) {
                 try {
                     Thread.sleep(delay);
-                    if (count % SPEED == 0) {
+                    if (count % speed == 0) {
                         mGameView.next();
                         mHandler.post(mGameView::invalidate);
                     }

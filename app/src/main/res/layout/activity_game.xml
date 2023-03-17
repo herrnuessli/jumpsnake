@@ -74,44 +74,46 @@
 =======
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".MainActivity">
+    android:background="@color/bg_color"
+    tools:context=".GameActivity">
 
     <TextView
         android:id="@+id/game_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:background="#000"
         android:text="Score: 0"
-        android:textColor="@color/white"
+        android:textColor="@color/text_color"
         android:textSize="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/game_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="@dimen/game_size"
+        android:layout_height="@dimen/game_size"
         android:layout_marginTop="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/game_score" >
+        app:layout_constraintTop_toBottomOf="@id/game_score">
+
         <ch.zli.jumpsnake.GameView
             android:id="@+id/game_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#000"/>
+            android:layout_width="@dimen/game_size"
+            android:layout_height="@dimen/game_size"
+            android:background="#000" />
+
         <TextView
             android:id="@+id/game_status"
-            android:text="game Over"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:visibility="invisible"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="game over"
+            android:textColor="@color/text_color"
+            android:textSize="30dp"
+            android:visibility="invisible" />
     </FrameLayout>
 
     <Button
@@ -160,5 +162,23 @@
         app:layout_constraintStart_toEndOf="@+id/left_btn"
         app:layout_constraintTop_toBottomOf="@+id/right_btn" />
 
+<<<<<<< HEAD
 </androidx.constraintlayout.widget.ConstraintLayout>
 >>>>>>> 7c1d5a1 (add activities)
+=======
+    <TextView
+        android:id="@+id/jokeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="644dp"
+        android:layout_marginEnd="157dp"
+        android:layout_marginBottom="68dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> 1c44806 (add difficulty settings)
