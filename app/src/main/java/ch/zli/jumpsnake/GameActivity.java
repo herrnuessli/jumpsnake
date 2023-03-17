@@ -2,44 +2,16 @@ package ch.zli.jumpsnake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import android.content.Intent;
-import android.os.Bundle;
-<<<<<<< HEAD
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
-
-public class GameActivity extends AppCompatActivity {
-
-    private SnakeView snakeView;
-    private Button buttonUp, buttonDown, buttonLeft, buttonRight;
-
-=======
-=======
-=======
-import android.content.Intent;
->>>>>>> 1c44806 (add difficulty settings)
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
->>>>>>> 95653d6 (finish snake prototype)
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class GameActivity extends AppCompatActivity {
-<<<<<<< HEAD
-
-<<<<<<< HEAD
->>>>>>> 7c1d5a1 (add activities)
-=======
-=======
->>>>>>> 1c44806 (add difficulty settings)
     private static final int FPS = 60;
     private int speed = 25;
 
@@ -57,64 +29,10 @@ public class GameActivity extends AppCompatActivity {
 
     private final Handler mHandler = new Handler();
 
->>>>>>> 95653d6 (finish snake prototype)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Set fullscreen mode
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         setContentView(R.layout.activity_game);
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-        // Set content view to SnakeView
-        snakeView = new SnakeView(this, null);
-        buttonUp = findViewById(R.id.buttonUp);
-        buttonDown = findViewById(R.id.buttonDown);
-        buttonLeft = findViewById(R.id.buttonLeft);
-        buttonRight = findViewById(R.id.buttonRight);
-        setContentView(snakeView);
-
-        buttonUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snakeView.moveUp();
-            }
-        });
-
-        buttonDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snakeView.moveDown();
-            }
-        });
-
-        buttonLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snakeView.moveLeft();
-            }
-        });
-
-        buttonRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                snakeView.moveRight();
-            }
-        });
-
-        //difficulty
-        Intent intent = getIntent();
-        int difficulty = intent.getIntExtra("difficulty",0);
-
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        snakeView.startGame();
-=======
 
         Intent intent = getIntent();
         int difficulty = intent.getIntExtra("difficulty", 0);
@@ -139,10 +57,8 @@ public class GameActivity extends AppCompatActivity {
         mGameBtn = findViewById(R.id.game_control_btn);
         mGameScoreText = findViewById(R.id.game_score);
         mGameView.init();
-        TextView jokeView = findViewById(R.id.jokeView);
         mGameView.setGameScoreUpdatedListener(score -> {
-            mHandler.post(() -> mGameScoreText.setText("Score: " + score + "hey"));
-            jokeView.setText("hey");
+            mHandler.post(() -> mGameScoreText.setText("Score: " + score));
         });
 
         findViewById(R.id.up_btn).setOnClickListener(v -> {
@@ -176,18 +92,11 @@ public class GameActivity extends AppCompatActivity {
         });
 
         setGameStatus(STATUS_START);
->>>>>>> 95653d6 (finish snake prototype)
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-<<<<<<< HEAD
-        snakeView.stopGame();
-    }
-=======
->>>>>>> 7c1d5a1 (add activities)
-=======
         if (mGameStatus.get() == STATUS_PLAYING) {
             setGameStatus(STATUS_PAUSED);
         }
@@ -240,5 +149,4 @@ public class GameActivity extends AppCompatActivity {
             }
         }).start();
     }
->>>>>>> 95653d6 (finish snake prototype)
 }
