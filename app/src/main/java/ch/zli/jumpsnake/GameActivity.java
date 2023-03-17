@@ -34,6 +34,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        Button menuButton = findViewById(R.id.menuButton);
+
         Intent intent = getIntent();
         int difficulty = intent.getIntExtra("difficulty", 0);
 
@@ -92,6 +94,12 @@ public class GameActivity extends AppCompatActivity {
         });
 
         setGameStatus(STATUS_START);
+
+        Intent intent2 = new Intent(GameActivity.this, MainActivity.class);
+
+        menuButton.setOnClickListener(view -> {
+            startActivity(intent2);
+        });
     }
 
     @Override
